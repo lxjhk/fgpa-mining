@@ -16,13 +16,6 @@
             </list>
         </property>
 
-        <property name="transactionConfiguration">
-            <bean class="org.apache.ignite.configuration.TransactionConfiguration">
-                <property name="TransactionConcurrency" value="OPTIMISTIC"/>
-                <property name="TransactionIsolation" value="SERIALIZABLE"/>
-            </bean>
-        </property>
-
         <!-- Explicitly configure TCP discovery SPI to provide list of initial nodes. -->
         <property name="discoverySpi">
             <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
