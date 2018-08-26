@@ -67,19 +67,19 @@ func sendText(conn *net.Conn){
 
 func main(){
 
-	//conn, _ := net.Dial(CONN_TYPE, CONN_ADDR)
-	//err := conn.(*net.TCPConn).SetKeepAlive(true)
-	//if err != nil {
-	//	fmt.Println(err)
-	//	return
-	//}
-	//if err != nil {
-	//	fmt.Println(err)
-	//	return
-	//}
-	//go listenAndPrint(&conn)
-	//go sendText(&conn)
-	//time.Sleep(time.Second * 1000)
+	conn, _ := net.Dial(CONN_TYPE, CONN_ADDR)
+	err := conn.(*net.TCPConn).SetKeepAlive(true)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	go listenAndPrint(&conn)
+	go sendText(&conn)
+	time.Sleep(time.Second * 1000)
 
 
 
