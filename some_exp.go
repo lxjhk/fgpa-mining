@@ -7,7 +7,6 @@ import (
 	"net"
 	"bufio"
 	"log"
-	"time"
 )
 
 type response1 struct {
@@ -65,21 +64,21 @@ func sendText(conn *net.Conn){
 	}
 }
 
-func main(){
+func amain(){
 
-	conn, _ := net.Dial(CONN_TYPE, CONN_ADDR)
-	err := conn.(*net.TCPConn).SetKeepAlive(true)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	go listenAndPrint(&conn)
-	go sendText(&conn)
-	time.Sleep(time.Second * 1000)
+	//conn, _ := net.Dial(CONN_TYPE, CONN_ADDR)
+	//err := conn.(*net.TCPConn).SetKeepAlive(true)
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	//if err != nil {
+	//	fmt.Println(err)
+	//	return
+	//}
+	//go listenAndPrint(&conn)
+	//go sendText(&conn)
+	//time.Sleep(time.Second * 1000)
 
 
 
