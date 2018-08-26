@@ -1,3 +1,4 @@
-# fgpa-mining
+# FGPA BitCoin Mining Demo
 
-See WIKI.
+See WiKi
+
