@@ -12,10 +12,10 @@ type mining_notify_job struct {
 	nbits         string
 	ntime         string
 	clean_jobs    bool
+	difficulty    int
 }
 
-
-func (self mining_notify_job) calculateMerkelRoot(cb *[]byte) []byte {
+func (self *mining_notify_job) calculateMerkelRoot(cb *[]byte) []byte {
 	merkle_root := make([]byte, len(*cb))
 	copy(merkle_root, *cb)
 
@@ -27,7 +27,7 @@ func (self mining_notify_job) calculateMerkelRoot(cb *[]byte) []byte {
 }
 
 //To produce coinbase, we just concatenate Coinb1 + Extranonce1 + Extranonce2 + Coinb2 together.
-func (self mining_notify_job) buildCoinBase(extranonce1 *string, extranonce2 *string) *[]byte {
+func (self *mining_notify_job) buildCoinBase(extranonce1 *string, extranonce2 *string) *[]byte {
 	s, _ := hex.DecodeString(
 		self.coinb1 +
 			*extranonce1 +
@@ -38,11 +38,10 @@ func (self mining_notify_job) buildCoinBase(extranonce1 *string, extranonce2 *st
 }
 
 // need to reverse the byte order of merkle root
-func (self mining_notify_job) getFPGAJob(mr []byte) string {
+func (self *mining_notify_job) getFPGAJob(mr []byte) string {
 	t1 := self.version + self.prevhash +
 		hex.EncodeToString(reverseArray(mr)) +
 		self.ntime +
 		self.nbits
 	return t1
 }
-
